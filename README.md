@@ -9,14 +9,13 @@
     - [其他安装包](#其他安装包)
 - [数据集](#数据集)
     - [Synapse](#synapse)
-    - [FLARE22](#flare22)
 - [训练和测试](#训练和测试)
 - [方法库](#方法库)
     - [医学图像语义分割](#医学图像语义分割)
     - [知识蒸馏](#知识蒸馏)
 - [参考文档](#参考文档)
-- [Acknowledgement](#acknowledgement)
-- [Citation](#citation)
+- [致谢](#致谢)
+- [引用](#引用)
 - [License](#license)
 
 # 安装要求
@@ -41,10 +40,10 @@ pip install -r requirements.txt
 
 ## Synapse
 
+- 官方网址 (未处理的3D原始数据，需要注册账号)：
 https://www.synapse.org/#!Synapse:syn3193805/wiki/217752
-
-## FLARE22
-https://flare22.grand-challenge.org
+- Google云盘链接 (**预处理好的2D切片数据，建议下载**)：
+https://drive.google.com/file/d/1pNHGzZpCae-AjpswEFOUUWn5YrH7v66J/view?usp=drive_link
 
 # 训练和测试
 
@@ -161,10 +160,15 @@ python test.py {config}
 | KD            |  [config](configs/distill/kd)      |
 | AT            |  [config](configs/distill/at)|
 | DKD          | [config](configs/distill/dkd)      |
-| DIST          | [config](configs/distill/dist)      |
+| DIST          | [config](configs/distill/DIST)      |
 | CWD          | [config](configs/distill/cwd)      |
 | ReviewKD          | [config](configs/distill/reviewkd)      |
+### 教师权重
+知识蒸馏需要先**预训练教师**，这里提供**部分**教师权重：
 
+Google云盘：https://drive.google.com/drive/folders/1E5aduWgQXbeFkMTROdfUpUl5icDWpMQI?usp=drive_link
+
+建议自己训练教师权重。
 ### 参考文献
 
 **KD**
@@ -236,16 +240,17 @@ python test.py {config}
 - 语义分割平台：[MMSegmentation](https://mmsegmentation.readthedocs.io/zh-cn/latest/)
 - 知识蒸馏平台：[MMRazor](https://mmrazor.readthedocs.io/en/latest/)
 
-# Acknowledgement
+# 致谢
 
-Specially thanks to the following:
+特别致谢:
 - [MMSegmentation](https://github.com/open-mmlab/mmsegmentation "MMSegmentation")
 - [MMEngine](https://github.com/open-mmlab/mmengine "MMEngine")
 - [Monai](https://github.com/Project-MONAI)
 - [MedNeXt](https://github.com/MIC-DKFZ/MedNeXt)
 - [MISSFormer](https://github.com/ZhifangDeng/MISSFormer/tree/main)
+- 江西理工大学-信息工程学院
 
-# Citation
+# 引用
 
 ```bash
 @misc{mmseg2020,
