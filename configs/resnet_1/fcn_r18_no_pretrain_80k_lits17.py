@@ -1,0 +1,22 @@
+from mmengine.config import read_base
+with read_base():
+    from .fcn_r50_d8_80k_lits17 import * # noqa
+
+model.update(dict(
+    backbone=dict(
+        depth=18,
+        init_cfg=None),
+    decode_head=dict(
+        in_channels=512,
+        channels=128)))
+vis_backends = [
+    dict(type=LocalVisBackend),
+    dict(
+        type=WandbVisBackend,
+        init_kwargs=dict(
+            project='lits17', name='fcn-r18-no-pretrain-80k'),
+        define_metric_cfg=dict(mDice='max'))
+]
+visualizer = dict(type=SegLocalVisualizer,
+                  vis_backends=vis_backends,
+                  name='visualizer')
